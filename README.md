@@ -1,4 +1,4 @@
-# Invoice CRUD
+# Invoice APP
 
 
 ## OS Dependencies
