@@ -16,7 +16,7 @@ from .serializers import (
 from django.conf import settings
 from rest_framework.permissions import AllowAny
 
-class UploadInvoiceAPIView(APIView):
+class UploadInvoiceAPIView(CreateAPIView):
     
     serializer_class = InvoiceUploadSerializer
     

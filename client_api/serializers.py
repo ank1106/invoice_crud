@@ -3,6 +3,8 @@ from rest_framework.serializers import (
     Serializer,
     SerializerMethodField,
     FileField,
+    ListField,
+    DictField,
     ValidationError
 )
 from .models import Invoice, InvoiceItem
@@ -10,13 +12,16 @@ from .utils import mockInvoiceParser
 
 class InvoiceItemSerializer(ModelSerializer):
     
+
     class Meta:
         model = InvoiceItem
         exclude = ('invoice',)
         read_only_fields = ('invoice', 'id',)
 
 class InvoiceSerializer(ModelSerializer):
-    items = SerializerMethodField()
+    items = type('SerializerMethodField', (SerializerMethodField, ListField), dict())(
+        help_text='ex: [{"name":"string", "qty":"number", "price":"float"}..]')
+    # items = SerializerMethodField()
     customer = SerializerMethodField()
 
     class Meta:

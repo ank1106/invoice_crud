@@ -7,17 +7,23 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         pass
-        # parser.add_argument('poll_ids', nargs='+', type=int)
 
     def handle(self, *args, **options):
-        if not User.objects.filter(username="client").count():
-            client = User.objects.create_user('client', 'client@gmail.com', 'client')
-        if not User.objects.filter(username="staff").count():
-            staff = User.objects.create_user('staff', 'staff@gmail.com', 'staff')
-            staff.is_staff = True
-            staff.is_superuser = True
-            staff.save()
-        self.stdout.write(self.style.SUCCESS('Successfully created users Client and Staff'))
+        # create client
+        user, created = User.objects.get_or_create(username="client")
+        user.email = "client@gmail.com"
+        user.is_staff = True # for demo purpose
+        user.set_password('client')
+        user.save()
+        
+        # create staff
+        user, created = User.objects.get_or_create(username="staff")
+        user.email = "staff@gmail.com"
+        user.is_staff = True
+        user.is_superuser = True
+        user.set_password('staff')
+        user.save()
         self.stdout.write('Staff -> username: staff, password: staff')
         self.stdout.write('Client -> username: client, password: client')
+        self.stdout.write(self.style.SUCCESS('Successfully created users Client and Staff'))
         

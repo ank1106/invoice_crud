@@ -42,9 +42,17 @@ python manage.py init_script
 above command creats two users client and staff. the staff user can be used to login to admin dashboard
 
 
+## Docs
 
+After installation of dependencies, migrations and initial user setup (python manage.py init_script)
 
+### Swagger APIS
+http://localhost:8000/swagger
 
+### API docs
+http://localhost:8000/docs
+
+## [Video Walkthrough](https://drive.google.com/file/d/15FdzOgRDifPs-L3w4-_JmCx1JUFWoLj2/view?usp=sharing)
 
 
 
