@@ -18,7 +18,7 @@ jsonpickle==1.4.1
 MarkupSafe==1.1.1
 packaging==20.4
 pdftotext==2.1.4
-PyJWT==1.7.1
+PyJWT==2.4.0
 pyparsing==2.4.7
 pytz==2020.1
 requests==2.23.0
